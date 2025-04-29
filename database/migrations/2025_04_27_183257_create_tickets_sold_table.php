@@ -13,10 +13,6 @@ return new class extends Migration
     {
         Schema::create('tickets_sold', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('ticket_id');
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-            $table->string('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

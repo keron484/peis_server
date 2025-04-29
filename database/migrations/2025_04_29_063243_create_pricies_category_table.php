@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('winners_category', function (Blueprint $table) {
+        Schema::create('prices_category', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name');
             $table->decimal('winnings', 10, 2);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('winners_category');
+        Schema::dropIfExists('pricies_category');
     }
 };

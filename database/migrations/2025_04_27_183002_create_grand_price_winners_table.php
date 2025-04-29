@@ -13,10 +13,6 @@ return new class extends Migration
     {
         Schema::create('grand_price_winners', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('campaign_id');
-            $table->foreign('campaign_id')->references('id')->on('campaign')->onDelete('cascade');
             $table->decimal('winnings', 10, 2);
             $table->timestamps();
         });

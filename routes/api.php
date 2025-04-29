@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\AppAdmin\LoginAppAdminController;
 use App\Http\Controllers\Auth\AppAdmin\LogoutAppAdminController;
 use App\Http\Controllers\Auth\AppAdmin\ValidateAppAdminOtpController;
 use App\Http\Controllers\Auth\AppAdmin\CreateAppAdminController;
+use App\Http\Controllers\CampaignController;
 
 Route::prefix('v1/auth/user')->group(function () {
     Route::post('/login-user', [LoginController::class, 'loginUser']);
@@ -36,5 +37,9 @@ Route::prefix('v1/auth/app-admin')->group(function ( ) {
     Route::post('/verify-password-reset-otp', [AppAdminPasswordResetController::class, 'verifyOtp']);
     Route::post('/change-password-unauth', [AppAdminPasswordResetController::class, 'changePassword']);
     Route::middleware(['auth:sanctum'])->post('/create-app-admin', [CreateAppAdminController::class, 'createAppAdmin']);
+});
+
+Route::prefix('v1/campaigns')->group( function() {
+   Route::post('/create-campaign', [CampaignController::class, 'createCampaign']);
 });
 

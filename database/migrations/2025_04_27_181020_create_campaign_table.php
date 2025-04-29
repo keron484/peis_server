@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('total_tickets');
             $table->decimal('ticket_price', 10, 2);
             $table->decimal('minimum_winnings', 10, 2);
+            $table->enum('availability', ['available', 'sold_out']);
             $table->timestamps();
         });
     }

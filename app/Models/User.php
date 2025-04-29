@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
@@ -53,6 +54,13 @@ class User extends Authenticatable
     public function otps()
     {
         return $this->morphMany(Otp::class, 'otpable');
+    }
+
+    public function ticketBoughtCount(): HasMany {
+        return $this->hasMany(TicketsBoughtCount::class, 'user_id');
+    }
+    public function ticketsBought():HasMany {
+        return $this->hasMany(TicketsBought::class, 'user_id');
     }
     protected static function boot()
     {

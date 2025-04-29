@@ -4,19 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use illuminate\Support\Str;
-class GrandPriceWinners extends Model
+class PricesCategory extends Model
 {
     //
     protected $fillable = [
-        'user_id',
-        'campaign_id',
-        'winnings',
+       'name',
+       'winnings',
+       'campaign_id',
     ];
 
-    protected $table = 'grand_price_winners';
-    public $incrementing = 'false';
+    public $table = 'prices_category';
+    public $incrementing = false;
     public $keyType = 'string';
 
+    public function campaign()
+    {
+        return $this->belongsTo(Campaign::class, 'campaign_id');
+    }
     protected static function boot()
     {
         parent::boot();
